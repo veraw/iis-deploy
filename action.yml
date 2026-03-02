@@ -4,6 +4,9 @@ inputs:
   website-name:
     description: "IIS website name"
     required: true
+  app-name:
+    description: "IIS website application name (eg: Virtual application name)"
+    required: false
   source-path:
     description: "The path to the source directory that will be deployed"
     required: true
@@ -18,12 +21,13 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Deploy Application ${{ inputs.website-name }} on IIS
+    - name: Deploy Application ${{ inputs.website-name }} ${{ inputs.app-name }} on IIS
       shell: powershell
       run: >
         ${{ github.action_path }}/scripts/deploy.ps1
         -sourceDir ${{ inputs.source-path }}
         -siteName ${{ inputs.website-name }}
+        -appName ${{ inputs.app-name }}
         -releaseParentDir ${{ inputs.destination-path }}
         -keep ${{ inputs.number-to-keep }}
 branding:
