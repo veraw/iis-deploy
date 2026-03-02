@@ -30,7 +30,7 @@ try {
     
     Deploy-Files -sourceDir $sourceDir -destinationDir $newReleaseDir
     
-    Move-Site -siteName $siteName -virtualAppName $appName -newPath $newReleaseDir
+    Move-Site -siteName $siteName -appName $appName -newPath $newReleaseDir
     
     Cleanup-OldDirectories -targetFolder $releaseParentDir -keep $keep
     
