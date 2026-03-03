@@ -1,7 +1,7 @@
 name: 'IIS Rotational Deploy'
 description: 'Allows to deploy a website on IIS with less downtime by using rotational folders. Supports Site and/or Site/VirtualApp'
 inputs:
-  website-name:
+  site-name:
     description: "IIS site name"
     required: true
   app-name:
@@ -21,12 +21,12 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Deploy Application ${{ inputs.website-name }} ${{ inputs.app-name }} on IIS
+    - name: Deploy Application ${{ inputs.site-name }} ${{ inputs.app-name }} on IIS
       shell: powershell
       run: >
         ${{ github.action_path }}/scripts/deploy.ps1
         -sourceDir ${{ inputs.source-path }}
-        -siteName ${{ inputs.website-name }}
+        -siteName ${{ inputs.site-name }}
         -appName ${{ inputs.app-name }}
         -releaseParentDir ${{ inputs.destination-path }}
         -keep ${{ inputs.number-to-keep }}
