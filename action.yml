@@ -1,11 +1,11 @@
-name: 'IIS Versioned Deploy'
-description: 'Allows to deploy a website on IIS with less downtime'
+name: 'IIS Rotational Deploy'
+description: 'Allows to deploy a website on IIS with less downtime by using rotational folders. Supports Site and/or Site/VirtualApp'
 inputs:
   website-name:
-    description: "IIS website name"
+    description: "IIS site name"
     required: true
   app-name:
-    description: "IIS website application name (eg: Virtual application name)"
+    description: "IIS site application name (eg: Virtual application name)"
     required: false
   source-path:
     description: "The path to the source directory that will be deployed"
