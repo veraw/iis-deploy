@@ -1,6 +1,6 @@
-# IIS Versioned Deploy action
+# IIS Rotational Deploy action
 
-This action allows to deploy a website on IIS.
+This action allows to deploy a website on IIS (including virtual applications within site).
 
 Deploy to IIS using PowerShell script to avoid downtime.
 
@@ -40,7 +40,7 @@ r_5  <-- IIS points here
 
 <!-- start usage -->
 ```yaml
-- uses: wallymathieu/iis-deploy@main
+- uses: veraw/iis-deploy@main
   with:
     website-name: 'MyWebsite'
     app-name: 'virtual_app'
@@ -71,7 +71,7 @@ jobs:
         with:
           name: .net-app
           path: website\publish
-      - uses: wallymathieu/iis-deploy@main
+      - uses: veraw/iis-deploy@main
         with:
           website-name: 'MyWebsite'
           source-path: '${{ github.workspace }}\website\publish'
